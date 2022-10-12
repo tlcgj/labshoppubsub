@@ -14,17 +14,8 @@ public class Inventory  {
 
     
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    
-    
-    
-    
-    
+    //@GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
-    
-    
-    
-    
     
     private Long stock;
 
@@ -32,32 +23,25 @@ public class Inventory  {
     public void onPostPersist(){
     }
 
+    @PostLoad
+    public void makeDelay(){
+        try {
+            Thread.currentThread().sleep((long) (400 + Math.random() * 220));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public static InventoryRepository repository(){
         InventoryRepository inventoryRepository = InventoryApplication.applicationContext.getBean(InventoryRepository.class);
         return inventoryRepository;
     }
 
+    public static void decreaseStock(OrderPlaced orderPlaced) {
 
-
-
-    public static void decreaseStock(OrderPlaced orderPlaced){
-
-        /** Example 1:  new item 
-        Inventory inventory = new Inventory();
-        repository().save(inventory);
-
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(orderPlaced.get???()).ifPresent(inventory->{
-            
-            inventory // do something
-            repository().save(inventory);
-
-
-         });
-        */
+        /** fill out following code  */
+       
 
         
     }
